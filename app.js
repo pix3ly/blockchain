@@ -23,17 +23,25 @@ class Chain {
         })
     }
 
-    debug() {
-        let hashes = []
+    getBlocks() {
+        let blocks = this.chain
 
-        this.chain.forEach(block => {
-            hashes.push(block.calculateHash())
+        blocks.forEach(block => {
+            block.hash = block.calculateHash()
         })
 
-        console.log(hashes)
+        return blocks
     }
 }
 
 let chain = new Chain()
 
-chain.debug()
+const express = require('express')
+
+const app = express()
+
+app.get('/blocks', (request, response) => {
+    response.json(chain.getBlocks())
+})
+
+app.listen(3000)
