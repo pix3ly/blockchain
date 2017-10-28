@@ -1,3 +1,5 @@
+const config = require('./config')
+
 const SHA256 = require('crypto-js/sha256')
 
 class Block {
@@ -54,4 +56,4 @@ app.get('/blocks', (request, response) => {
     response.json(chain.getBlocks())
 })
 
-app.listen(3000)
+app.listen(config.web.port)
