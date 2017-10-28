@@ -18,9 +18,9 @@ class Chain {
     }
 
     createGenesisBlock() {
-        return new Block(null, {
+        return new Block({
             text: 'Hello world'
-        })
+        }, null)
     }
 
     getBlocks() {
