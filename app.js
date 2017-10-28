@@ -32,9 +32,19 @@ class Chain {
 
         return blocks
     }
+
+    addBlock(data) {
+        const previousHash = this.chain[this.chain.length - 1].calculateHash()
+
+        this.chain.push(new Block(data, previousHash))
+    }
 }
 
 let chain = new Chain()
+
+chain.addBlock({
+    text: 'Lorem ipsum'
+})
 
 const express = require('express')
 
